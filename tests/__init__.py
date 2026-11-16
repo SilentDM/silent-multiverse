@@ -24,3 +24,8 @@ for _chave in ("GOOGLE_API_KEY", "CLAUDE_TOKEN", "PRO_API_KEY", "DISCORD_TOKEN",
     os.environ.pop(_chave, None)
 
 PASTA_TEMP = _TEMP
+
+# No GitHub Actions: se a suíte ficar parada, mostra onde cada thread está (a cada SILENT_TEST_TIMEOUT segundos)
+if os.environ.get("SILENT_TEST_TIMEOUT"):
+    import faulthandler
+    faulthandler.dump_traceback_later(int(os.environ["SILENT_TEST_TIMEOUT"]), repeat=True)
