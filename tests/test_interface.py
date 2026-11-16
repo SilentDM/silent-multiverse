@@ -38,7 +38,10 @@ class TesteInterface(unittest.TestCase):
         self.patches = [mock.patch("bot.runner.iniciar"), mock.patch("bot.runner.parar"),
                         mock.patch("core.modelos_gemini.atualizar_se_necessario"),
                         mock.patch("core.atualizacoes.verificar_na_inicializacao"),
-                        mock.patch("ui.app.SilentApp._iniciar_bandeja")]
+                        mock.patch("ui.app.SilentApp._iniciar_bandeja"),
+                        # Janelas modais esperariam um clique para sempre (no GitHub Actions não há ninguém)
+                        mock.patch("tkinter.messagebox.showerror"), mock.patch("tkinter.messagebox.showinfo"),
+                        mock.patch("tkinter.messagebox.showwarning")]
         for p in self.patches:
             p.start()
 
