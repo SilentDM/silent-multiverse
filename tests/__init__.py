@@ -17,7 +17,7 @@ if str(RAIZ_REPO) not in sys.path:
     sys.path.insert(0, str(RAIZ_REPO))
 
 # Precisa acontecer ANTES de qualquer import de engine/core (que cria .silent_data)
-_TEMP = Path(tempfile.mkdtemp(prefix="silent_tests_"))
+_TEMP = Path(tempfile.mkdtemp(prefix="silent_tests_")).resolve()   # nome longo (o GitHub usa RUNNER~1)
 os.environ["SILENT_DATA_DIR"] = str(_TEMP / "dados")
 os.environ["PASTA_PROJETO"] = str(_TEMP / "projeto_inicial")
 for _chave in ("GOOGLE_API_KEY", "CLAUDE_TOKEN", "PRO_API_KEY", "DISCORD_TOKEN", "MESTRE_DISCORD_ID", "AI_PROVIDER"):
