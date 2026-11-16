@@ -165,9 +165,10 @@ This creates `dist/SilentMultiverse.exe` and `dist/SilentMultiverse-<version>-wi
 
 **Publishing a release:**
 1. Update `VERSAO` in `core/versao.py` (e.g. `2.1.0`) and commit.
-2. Create and push a matching tag: `git tag v2.1.0` then `git push origin v2.1.0`.
-3. GitHub Actions (`.github/workflows/release.yml`) runs the tests, builds the `.zip` on Windows and creates a **draft** release.
-4. Review the draft on GitHub and click **Publish release**. The program's update check then shows the new version to users.
+2. Run the tests and build on your PC: `python -m unittest discover -s tests -t .` then `python build.py --tag v2.1.0` (it checks that the tag matches `VERSAO`).
+3. Publish the release with the `.zip`: `gh release create v2.1.0 dist/SilentMultiverse-2.1.0-windows.zip --title "Silent Multiverse v2.1.0" --generate-notes`. The program's update check then shows the new version to users.
+
+To check the build on a clean Windows machine, run **Actions → Release → Run workflow** on GitHub: it runs the tests and builds the `.zip` as an artifact, without creating a release.
 
 ---
 

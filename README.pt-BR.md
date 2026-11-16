@@ -165,9 +165,10 @@ Isso cria `dist/SilentMultiverse.exe` e `dist/SilentMultiverse-<versão>-windows
 
 **Publicando uma versão:**
 1. Atualize `VERSAO` em `core/versao.py` (ex.: `2.1.0`) e faça o commit.
-2. Crie e envie a tag correspondente: `git tag v2.1.0` e depois `git push origin v2.1.0`.
-3. O GitHub Actions (`.github/workflows/release.yml`) roda os testes, gera o `.zip` no Windows e cria uma release em **rascunho**.
-4. Revise o rascunho no GitHub e clique em **Publish release**. A verificação de atualizações do programa passa a mostrar a nova versão aos usuários.
+2. Rode os testes e gere o pacote no PC: `python -m unittest discover -s tests -t .` e depois `python build.py --tag v2.1.0` (ele confere se a tag bate com `VERSAO`).
+3. Publique a release com o `.zip`: `gh release create v2.1.0 dist/SilentMultiverse-2.1.0-windows.zip --title "Silent Multiverse v2.1.0" --generate-notes`. A verificação de atualizações do programa passa a mostrar a nova versão aos usuários.
+
+Para conferir o build em um Windows limpo, rode **Actions → Release → Run workflow** no GitHub: ele roda os testes e gera o `.zip` como artefato, sem criar release.
 
 ---
 

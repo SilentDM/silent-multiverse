@@ -3,7 +3,7 @@ Gera o executável do Silent Multiverse e o pacote .zip da release.
 
 Uso (com o venv ativo e requirements-build.txt instalado):
     python build.py               -> dist/SilentMultiverse.exe + dist/SilentMultiverse-<versão>-windows.zip
-    python build.py --tag v2.0.0  -> também confere se a tag bate com core/versao.py (usado no GitHub Actions)
+    python build.py --tag v2.0.0  -> também confere se a tag bate com core/versao.py
 
 Inclui no executável: locale/ (textos, prompts e os modelos iniciais de Templates/Style
 de cada idioma, copiados para a .silent_data no primeiro uso) e icon.ico.
